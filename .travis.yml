@@ -14,7 +14,7 @@ env:
 
 script:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build --pull -t alvisisme/alpine:$ALPINE_VERSION --build-arg ALPINE_VERSION=$ALPINE_VERSION
+  - docker build --pull -t alvisisme/alpine:$ALPINE_VERSION --build-arg ALPINE_VERSION=$ALPINE_VERSION .
   - docker push alvisisme/alpine:$ALPINE_VERSION
   - echo "$ALIYUN_PASSWORD" | docker login -u "$ALIYUN_USERNAME" --password-stdin registry.cn-hangzhou.aliyuncs.com
   - docker tag alvisisme/alpine:$ALPINE_VERSION registry.cn-hangzhou.aliyuncs.com/alvisisme/alpine:$ALPINE_VERSION
